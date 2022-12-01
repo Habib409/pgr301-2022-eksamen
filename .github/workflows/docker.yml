@@ -1,6 +1,5 @@
 # Jim; I'm giving up on this docker thing. It just fails ,and I've spent about six weeks on this...
 name: Docker build
-
 on:
   push:
     branches:
@@ -21,6 +20,6 @@ jobs:
         run: |
           aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
           rev=$(git rev-parse --short HEAD)
-          docker build . -t testdock
-          docker tag testdock 244530008913.dkr.ecr.eu-west-1.amazonaws.com/hahi003:$rev
+          docker build . -t shopify
+          docker tag shopify 244530008913.dkr.ecr.eu-west-1.amazonaws.com/hahi003:$rev
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/hahi003:$rev
