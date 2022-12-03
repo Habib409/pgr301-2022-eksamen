@@ -1,6 +1,7 @@
 package no.shoppifly;
 
 
+import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +9,15 @@ import java.util.List;
 
 @RestController()
 public class ShoppingCartController {
+
+
+    private MeterRegistry meterRegistry;
+
+    @Autowired
+    public ShoppingCartController(MeterRegistry meterRegistry, CartService cartService) {
+        this.cartService = cartService;
+        this.meterRegistry = meterRegistry;
+    }
 
     @Autowired
     private final CartService cartService;

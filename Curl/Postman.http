@@ -1,0 +1,113 @@
+# curl --location --request POST 'http://localhost:8080/cart'
+#  --header 'Content-Type: application/json'
+#  --data-raw '{
+#      "items":
+#      [
+#        {
+#          "description": "Ugly christmas sweater",
+#          "qty": "1",
+#          "unitPrice": "500"
+#        }
+#      ]
+#  }'
+POST http://localhost:8080/cart
+Content-Type: application/json
+
+{
+  "items": [
+    {
+      "description": "Ugly christmas sweater",
+      "qty": "1",
+      "unitPrice": "500"
+    }
+  ]
+}
+
+###
+
+# curl --location --request POST 'http://localhost:8080/cart'
+#--header 'Content-Type: application/json'
+#--data-raw '{
+#    "id": "fb49e386-7124-4c16-9067-2dde2ee75d4e",
+#    "items": [
+#        {
+#            "description": "Ugly christmas sweater",
+#            "qty": 1,
+#            "unitPrice": 500.0
+#        },
+#        {
+#            "description": "Shark socks",
+#            "qty": 20,
+#            "unitPrice": 10.0
+#        }
+#    ]
+#}'
+POST http://localhost:8080/cart
+Content-Type: application/json
+
+{
+  "id": "fb49e386-7124-4c16-9067-2dde2ee75d4e",
+  "items": [
+    {
+      "description": "Ugly christmas sweater",
+      "qty": 1,
+      "unitPrice": 500.0
+    },
+    {
+      "description": "Shark socks",
+      "qty": 20,
+      "unitPrice": 10.0
+    },
+    {
+      "description": "Shark socks",
+      "qty": 20,
+      "unitPrice": 1000.0
+    }
+  ]
+}
+
+###
+
+# curl --location --request POST 'http://localhost:8080/cart/checkout'
+#--header 'Content-Type: application/json'
+#--data-raw '{
+#    "id": "fb49e386-7124-4c16-9067-2dde2ee75d4e",
+#    "items": [
+#        {
+#            "description": "Ugly christmas sweater with Drone logo",
+#            "qty": 1,
+#            "unitPrice": 500.0
+#        },
+#        {
+#            "description": "Shark socks",
+#            "qty": 20,
+#            "unitPrice": 10.0
+#        }
+#    ]
+#}'
+POST http://localhost:8080/cart/checkout
+Content-Type: application/json
+
+{
+  "id": "fb49e386-7124-4c16-9067-2dde2ee75d4e",
+  "items": [
+    {
+      "description": "Ugly christmas sweater with Drone logo",
+      "qty": 1,
+      "unitPrice": 500.0
+    },
+    {
+      "description": "Shark socks",
+      "qty": 20,
+      "unitPrice": 10.0
+    },
+    {
+      "description": "Shark socks",
+      "qty": 20,
+      "unitPrice": 1000.0
+    }
+  ]
+}
+
+###
+
