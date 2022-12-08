@@ -1,6 +1,3 @@
-# Jim; Copied this off stack overflow. Not sure about this, does seem to ignore my failing unite tests... Give up!
-# Also, I can't get it to run automatically - it can only be triggered from the UI. Shouldn't it run on every commit
-# or something?
 name: CI pipeline
 on:
   push:

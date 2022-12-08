@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "pgr301-2021-terraform-state"
+    bucket = "analytics-1031"
     key    = "1031/cloudwatch-alarm.state"
     region = "eu-west-1"
   }
