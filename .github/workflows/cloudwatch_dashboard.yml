@@ -17,18 +17,36 @@ jobs:
       CANDIDATE_ID: 1031
       CANDIDATE_EMAIL: hahi003@EGMS.no
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v1
 
       - name: Terraform Init
         id: init
-        run: terraform init
-
+        run: |
+          cd infra
+          terraform init
+      - name: Terraform Validate
+        id: validate
+        run: |
+          cd infra
+          terraform validate -no-color
       - name: Terraform Plan
         id: plan
-        run: terraform plan  -var="candidate_id=$CANDIDATE_ID" -var="candidate_email=CANDIDATE_EMAIL" -no-color
-        continue-on-error: false
+        if: github.event_name == 'pull_request'
+        run: |
+          cd infra
+          terraform plan -no-color
+        continue-on-error: true
+
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
 
       - name: Terraform Apply
-        run: terraform apply -var="candidate_id=$CANDIDATE_ID" -var="candidate_email=$CANDIDATE_EMAIL"  -auto-approve
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          cd infra
+          terraform apply -auto-approve
