@@ -1,4 +1,4 @@
-name: Terraform CloudWatch
+name: Terraform CloudWatch dash
 defaults:
   run:
     working-directory: infra
