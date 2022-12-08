@@ -18,6 +18,6 @@ class Item {
 
     private String description;
     private int qty;
-    private Float unitPrice;
+     Float unitPrice;
 
 }

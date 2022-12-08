@@ -11,6 +11,7 @@ class NaiveCartImpl implements CartService {
 
     @Override
     public Cart getCart(String id) {
+
         return shoppingCarts.get(id);
     }
 
@@ -35,10 +36,12 @@ class NaiveCartImpl implements CartService {
     }
 
     // @author Jim; I'm so proud of this one, took me one week to figure out !!!
-    public float total() {
-        return shoppingCarts.values().stream()
+    public Float total() {
+        return shoppingCarts
+                .values()
+                .stream()
                 .flatMap(c -> c.getItems().stream()
-                        .map(i -> i.getUnitPrice() * i.getQty()))
+                .map(i -> i.getUnitPrice() * i.getQty()))
                 .reduce(0f, Float::sum);
     }
 }
