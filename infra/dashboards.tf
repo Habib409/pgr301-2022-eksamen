@@ -41,7 +41,8 @@ resource "aws_cloudwatch_dashboard" "main" {
         "region": "eu-west-1",
         "title": "Total carts currently"
       }
-    }    {
+    },
+    {
       "type": "metric",
       "x": 0,
       "y": 0,
@@ -59,7 +60,8 @@ resource "aws_cloudwatch_dashboard" "main" {
         "region": "eu-west-1",
         "title": "Total check outs"
       }
-    },    {
+    },
+    {
       "type": "metric",
       "x": 0,
       "y": 0,
