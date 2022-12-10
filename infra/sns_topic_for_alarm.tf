@@ -1,7 +1,7 @@
 resource "aws_cloudwatch_metric_alarm" "exceeds5" {
   alarm_name                = "Cart-1031"
   namespace                 = "${var.candidate_id}"
-  metric_name               = "cart_amount.value"
+  metric_name               = "cart_count.value"
 
   comparison_operator       = "GreaterThanThreshold"
   threshold                 = "5"
